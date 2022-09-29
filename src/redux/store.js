@@ -1,11 +1,16 @@
-import { legacy_createStore as createStore } from 'redux';
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
-import { rootReducer } from './reducers';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index';
 // configure aqui sua store
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(),
+  composeWithDevTools(applyMiddleware(thunk)),
 );
+
+if (window.Cypress) {
+  window.store = store;
+}
 
 export default store;
