@@ -1,13 +1,10 @@
 // Coloque aqui suas actions
-const EmailAndPasswordSucess = 'EmailAndPasswordSucess';
+const EMAIL_VALIDATED = 'EMAIL_VALIDATED';
 
-const emailAndPassword = (email, password) => ({
-  type: EmailAndPasswordSucess,
-  payload: {
+const EmailPayload = (payload) => ({ type: EMAIL_VALIDATED,
+  payload });
 
-  },
-});
-
-export default {
-  EmailAndPasswordSucess,
+export {
+  EMAIL_VALIDATED,
+  EmailPayload,
 };
