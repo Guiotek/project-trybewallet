@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { RequestApi, RequestApiOnClick } from '../redux/actions';
+import Header from '../components/Header';
+import Table from '../components/Table';
 
 class Wallet extends React.Component {
   state = {
@@ -49,34 +51,12 @@ class Wallet extends React.Component {
     });
   };
 
-  multiply = () => {
-    const { wallet: { expenses } } = this.props;
-    let number = 0;
-    expenses.forEach((e) => {
-      const rate = Number(e.exchangeRates[e.currency].ask);
-      number += Number(e.value) * rate;
-    });
-    return number.toFixed(2);
-  };
-
   render() {
-    const { user: { email }, wallet: { currencies, loading } } = this.props;
+    const { wallet: { currencies, loading } } = this.props;
     const { valor, descrição, moeda, metodo, categoria } = this.state;
     return (
       <div>
-        <header>
-          <p data-testid="email-field">
-            {email}
-          </p>
-          <p data-testid="total-field">
-            {
-              this.multiply()
-            }
-          </p>
-          <p data-testid="header-currency-field">
-            BRL
-          </p>
-        </header>
+        <Header />
         {
 
           loading ? <p>carregando</p> : (
@@ -154,6 +134,7 @@ class Wallet extends React.Component {
               >
                 Adicionar despesa
               </button>
+              <Table />
             </div>
           )
         }
