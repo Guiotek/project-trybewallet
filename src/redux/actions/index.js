@@ -7,6 +7,8 @@ export const INITIAL_REQUEST = 'INITIAL_REQUEST';
 export const GET_API_ONCLICK = 'GET_API_ONCLICK';
 export const INITIAL_REQUEST_ONCLICK = 'INITIAL_REQUEST_ONCLICK';
 
+export const DELETE_ITEM = 'DELETE_ITEM';
+
 export const EmailPayload = (payload) => ({ type: EMAIL_VALIDATED,
   payload });
 
@@ -23,6 +25,11 @@ export const initialRequestOnClick = () => ({
 });
 export const getRequestOnClick = (item) => ({
   type: GET_API_ONCLICK,
+  payload: item,
+});
+
+export const deleteItems = (item) => ({
+  type: DELETE_ITEM,
   payload: item,
 });
 

@@ -5,6 +5,7 @@ import {
   INITIAL_REQUEST,
   INITIAL_REQUEST_ONCLICK,
   GET_API_ONCLICK,
+  DELETE_ITEM,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -32,6 +33,11 @@ const wallet = (state = INITIAL_STATE, action) => {
   case INITIAL_REQUEST_ONCLICK:
     return {
       ...state,
+    };
+  case DELETE_ITEM:
+    return {
+      ...state,
+      expenses: action.payload,
     };
   case GET_API_ONCLICK:
     return {
